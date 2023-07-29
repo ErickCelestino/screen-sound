@@ -1,4 +1,4 @@
-﻿List<string> bandList = new List<string>{"U2", "Calipso", "The Beatles"};
+﻿List<string> bandList = new List<string>{"U2", "Calypso", "The Beatles"};
 
 void ShowLogo()
 {
@@ -65,9 +65,14 @@ void ShowRegisteredBands()
     Console.WriteLine("************************************");
     Console.WriteLine("Exibindo todas as bandas registradas");
     Console.WriteLine("************************************\n");
-    for (int i = 0; i< bandList.Count; i++)
+    // for (int i = 0; i< bandList.Count; i++)
+    // {
+    //     Console.WriteLine($"Banda: {bandList[i]}");
+    // }
+    
+    foreach (string band in bandList)
     {
-        Console.WriteLine($"Banda: {bandList[i]}");
+        Console.WriteLine($"Banda: {band}");
     }
     Console.WriteLine("\nDigite uma tecla para voltar ao menu");
     Console.ReadKey();
