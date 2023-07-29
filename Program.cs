@@ -1,21 +1,24 @@
-﻿
+﻿List<string> bandList = new List<string>{"U2", "Calipso", "The Beatles"};
+
 void ShowLogo()
 {
     string  welcome = "Welcome to Screen Sound";
     Console.WriteLine(@"
-░██████╗░█████╗░██████╗░███████╗███████╗███╗░░██╗  ░██████╗░█████╗░██╗░░░██╗███╗░░██╗██████╗░
-██╔════╝██╔══██╗██╔══██╗██╔════╝██╔════╝████╗░██║  ██╔════╝██╔══██╗██║░░░██║████╗░██║██╔══██╗
-╚█████╗░██║░░╚═╝██████╔╝█████╗░░█████╗░░██╔██╗██║  ╚█████╗░██║░░██║██║░░░██║██╔██╗██║██║░░██║
-░╚═══██╗██║░░██╗██╔══██╗██╔══╝░░██╔══╝░░██║╚████║  ░╚═══██╗██║░░██║██║░░░██║██║╚████║██║░░██║
-██████╔╝╚█████╔╝██║░░██║███████╗███████╗██║░╚███║  ██████╔╝╚█████╔╝╚██████╔╝██║░╚███║██████╔╝
-╚═════╝░░╚════╝░╚═╝░░╚═╝╚══════╝╚══════╝╚═╝░░╚══╝  ╚═════╝░░╚════╝░░╚═════╝░╚═╝░░╚══╝╚═════╝░");
+░██████╗░█████╗░██████╗░███████╗███╗░░██╗███╗░░██╗  ░██████╗░█████╗░██╗░░░██╗███╗░░██╗██████╗░
+██╔════╝██╔══██╗██╔══██╗██╔════╝████╗░██║████╗░██║  ██╔════╝██╔══██╗██║░░░██║████╗░██║██╔══██╗
+╚█████╗░██║░░╚═╝██████╔╝█████╗░░██╔██╗██║██╔██╗██║  ╚█████╗░██║░░██║██║░░░██║██╔██╗██║██║░░██║
+░╚═══██╗██║░░██╗██╔══██╗██╔══╝░░██║╚████║██║╚████║  ░╚═══██╗██║░░██║██║░░░██║██║╚████║██║░░██║
+██████╔╝╚█████╔╝██║░░██║███████╗██║░╚███║██║░╚███║  ██████╔╝╚█████╔╝╚██████╔╝██║░╚███║██████╔╝
+╚═════╝░░╚════╝░╚═╝░░╚═╝╚══════╝╚═╝░░╚══╝╚═╝░░╚══╝  ╚═════╝░░╚════╝░░╚═════╝░╚═╝░░╚══╝╚═════╝░
+    ");
+
     Console.WriteLine(welcome);
 }
 
 void ShowOptionsMenu()
 {
     ShowLogo();
-    Console.Write("\nDigite 1 para registrar uma banda");
+    Console.WriteLine("\nDigite 1 para registrar uma banda");
     Console.WriteLine("Digite 2 para mostrar todas as bandas");
     Console.WriteLine("Digite 3 para avaliar uma banda");
     Console.WriteLine("Digite 4 para exibir a média de uma banda");
@@ -28,7 +31,7 @@ void ShowOptionsMenu()
     {
         case 1: RegisterBand();
             break;
-        case 2: Console.WriteLine("Você digitou a opção " + chosenOption);
+        case 2: ShowRegisteredBands();
             break;
         case 3: Console.WriteLine("Você digitou a opção " + chosenOption);
             break;
@@ -44,11 +47,30 @@ void ShowOptionsMenu()
 void RegisterBand()
 {
     Console.Clear();
-    Console.WriteLine("Registro de bandas");
+    Console.WriteLine("*******************");
+    Console.WriteLine("Registro de bandas ");
+    Console.WriteLine("*******************\n");
     Console.Write("Digite o nome da banda que deseja registrar: ");
     string bandName = Console.ReadLine()!;
+    bandList.Add(bandName);
     Console.Write($"A banda {bandName} foi registrar com sucesso");
     Thread.Sleep(2000);
+    Console.Clear();
+    ShowOptionsMenu();
+}
+
+void ShowRegisteredBands()
+{
+    Console.Clear();
+    Console.WriteLine("************************************");
+    Console.WriteLine("Exibindo todas as bandas registradas");
+    Console.WriteLine("************************************\n");
+    for (int i = 0; i< bandList.Count; i++)
+    {
+        Console.WriteLine($"Banda: {bandList[i]}");
+    }
+    Console.WriteLine("\nDigite uma tecla para voltar ao menu");
+    Console.ReadKey();
     Console.Clear();
     ShowOptionsMenu();
 }
