@@ -1,14 +1,14 @@
 ﻿Music music1 = new Music();
-music1.name = "Faroeste caboclo";
-music1.artist = "Legião Urbana";
-music1.duration = 1800;
-music1.avaliable = true;
+music1.Name = "Faroeste caboclo";
+music1.Artist = "Legião Urbana";
+music1.Duration = 1800;
+music1.Avaliable = true;
 
 Music music2 = new Music();
-music2.name = "Garota";
-music2.artist = "Froid";
-music2.duration = 360;
-music2.avaliable = false;
+music2.Name = "Garota";
+music2.Artist = "Froid";
+music2.Duration = 360;
+music2.Avaliable = false;
 
 music1.ShowTecnicalFiche();
 music2.ShowTecnicalFiche();

@@ -1,27 +1,24 @@
-// Nome
-// Artista
-// Duração
-// Disponível
 class Music
 {
-    public string name;
-    public string artist;
-    public int duration;
-    public bool avaliable;
+    public string Name {get; set;}
+    public string Artist {get; set;}
+    public int Duration {get; set;}
+    public bool Avaliable {get; set;}
+    public string ResumeDescription => $"A música {Name} partence À banda {Artist}";
 
     public void ShowTecnicalFiche()
     {
         string avaliableCard;
-        if(avaliable) {
+        if(Avaliable) {
             avaliableCard = "Diponivel no plano";
         } else {
              avaliableCard = "Adquira o plano Plus+";
         }
 
         Console.WriteLine($@"
-        Nome: {name},
-        Artista: {artist},
-        Duração: {duration}
+        Nome: {Name},
+        Artista: {Artist},
+        Duração: {Duration}
         {avaliableCard}
         ");
     }
