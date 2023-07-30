@@ -9,7 +9,7 @@ class Music
     public Band Artist {get;}
     public int Duration {get; set;}
     public bool Avaliable {get; set;}
-    public string ResumeDescription => $"A música {Name} partence À banda {Artist}";
+    public string ResumeDescription => $"A música {Name} partence À banda {Artist.Name}";
 
     public void ShowTecnicalFiche()
     {
@@ -19,12 +19,11 @@ class Music
         } else {
              avaliableCard = "Adquira o plano Plus+";
         }
-
         Console.WriteLine($@"
-        Nome: {Name},
-        Artista: {Artist},
-        Duração: {Duration}
-        {avaliableCard}
+Nome: {Name},
+Artista: {Artist},
+Duração: {Duration}
+{avaliableCard}
         ");
     }
 }
