@@ -5,7 +5,7 @@ class Music
         Artist = artist;
         Name = name;
     }
-    public string Name {get; set;}
+    public string Name {get;}
     public Band Artist {get;}
     public int Duration {get; set;}
     public bool Avaliable {get; set;}

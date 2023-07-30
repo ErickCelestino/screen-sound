@@ -5,7 +5,7 @@ class Band
         Name = name;
     }
     private List<Album> albums = new List<Album>();
-    public string Name { get; set; }
+    public string Name {get;}
 
     public void AddAlbum(Album album)
     {
