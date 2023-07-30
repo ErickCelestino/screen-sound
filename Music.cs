@@ -1,7 +1,12 @@
 class Music
 {
+    public Music(Band artist, string name)
+    {
+        Artist = artist;
+        Name = name;
+    }
     public string Name {get; set;}
-    public string Artist {get; set;}
+    public Band Artist {get;}
     public int Duration {get; set;}
     public bool Avaliable {get; set;}
     public string ResumeDescription => $"A música {Name} partence À banda {Artist}";

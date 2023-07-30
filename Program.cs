@@ -1,14 +1,15 @@
-﻿Album albumDoQueen = new Album();
-albumDoQueen.Name = "A night at the opera";
+﻿Band queen = new Band("Queen");
 
-Music music1 = new Music();
-music1.Name = "Love of my life";
+Album albumDoQueen = new Album("A night at the opera");
+
+Music music1 = new Music(queen,"Love of my life");
 music1.Duration = 213;
 
-Music music2 = new Music();
-music2.Name = "Bohemian Rhapsody";
+Music music2 = new Music(queen,"Bohemian Rhapsody");
 music2.Duration = 354;
 
 albumDoQueen.AddMusic(music1);
 albumDoQueen.AddMusic(music2);
-albumDoQueen.ShowMusicsFromAlgum();
+
+queen.AddAlbum(albumDoQueen);
+queen.ShowDiscography();
