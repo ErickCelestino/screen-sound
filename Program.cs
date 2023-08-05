@@ -122,9 +122,9 @@ void RateBand()
     {
         Band band = RegisteredBands[bandName];
         Console.Write($"Qual a nota que a banda {bandName} merece: ");
-        int note = int.Parse(Console.ReadLine()!);
-        band.AddNote(new Avaliation(note));
-        Console.WriteLine($"\nA nota {note} foi registrada com sucesso para a banda {bandName}");
+        Avaliation note = Avaliation.Parse(Console.ReadLine()!);
+        band.AddNote(note);
+        Console.WriteLine($"\nA nota {note.Note} foi registrada com sucesso para a banda {bandName}");
         Thread.Sleep(2000);
         ShowOptionsMenu();
     }

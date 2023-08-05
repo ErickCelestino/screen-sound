@@ -7,4 +7,10 @@ internal class Avaliation
         Note = note;
     }
     public int Note { get; }
+
+    static public Avaliation Parse(string text)
+    {
+        int note = int.Parse(text);
+        return new Avaliation(note);
+    }
 }
