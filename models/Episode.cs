@@ -1,3 +1,4 @@
+namespace ScreenSound.Models;
 class Episode
 {
     private List<string> guests = new();

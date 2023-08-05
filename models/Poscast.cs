@@ -1,3 +1,4 @@
+namespace ScreenSound.Models;
 class PodCast 
 {
     List<Episode> episodes = new();
