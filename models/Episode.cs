@@ -1,7 +1,7 @@
 namespace ScreenSound.Models;
-class Episode
+internal class Episode
 {
-    private List<string> guests = new();
+    private readonly List<string> guests = new();
     public Episode(int order, string title, int duration)
     {
         Order = order;

@@ -1,12 +1,12 @@
 namespace ScreenSound.Models;
 
-class Album
+internal class Album
 {
     public Album(string name)
     {
         Name = name;
     }
-    private List<Music> musics = new();
+    private readonly List<Music> musics = new();
     public string Name {get;}
     public int TotalDuration => musics.Sum(m => m.Duration);
     public List<Music> Musics => musics;
