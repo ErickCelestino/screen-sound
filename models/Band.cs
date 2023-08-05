@@ -6,8 +6,15 @@ internal class Band
         Name = name;
     }
     private readonly List<Album> Albums = new();
-    private readonly List<int> Notes = new();
-    public double Average =>  Notes.Average();
+    private readonly List<Avaliation> Notes = new();
+    public double Average
+    {
+        get
+        {
+            if(Notes.Count == 0) return 0;
+            else return Notes.Average(a => a.Note);
+        }
+    }
     public string Name {get;}
 
     public void AddAlbum(Album album)
@@ -15,7 +22,7 @@ internal class Band
         Albums.Add(album);
     }
 
-    public void AddNote(int note)
+    public void AddNote(Avaliation note)
     {
         Notes.Add(note);
     }
