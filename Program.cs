@@ -1,4 +1,6 @@
 ﻿using ScreenSound.Models;
+using ScreenSound.Menus;
+using ScreenSound.Utils;
 
 Band ira = new("Ira!");
 ira.AddNote(new Avaliation(10));
@@ -62,7 +64,9 @@ void ShowOptionsMenu()
             RegisterAlbum();
             break;
         case 6:
-            ShowDetails();
+            ShowDetailsMenu menu = new(); 
+            menu.Execute(RegisteredBands);
+            ShowOptionsMenu();
             break;
         case -1:
             Console.WriteLine("Tchau tchau =)");
@@ -130,7 +134,7 @@ void RateBand()
     }
     else
     {
-        showMessageNotFoundBand(bandName);
+        Errors.ShowMessageNotFoundBand(bandName);
         ShowOptionsMenu();
     };
 }
@@ -151,16 +155,9 @@ void ShowAverage()
     }
     else
     {
-        showMessageNotFoundBand(bandName);
+        Errors.ShowMessageNotFoundBand(bandName);
         ShowOptionsMenu();
     }
-}
-void showMessageNotFoundBand(string bandName)
-{
-    Console.WriteLine($"\nA banda {bandName} não foi encontrada!");
-    Console.WriteLine("Digite uma tecla para voltar ao menu principal");
-    Console.ReadKey();
-    Console.Clear();
 }
 
 void RegisterAlbum()
@@ -180,32 +177,9 @@ void RegisterAlbum()
     }
     else
     {
-        showMessageNotFoundBand(bandName);
+        Errors.ShowMessageNotFoundBand(bandName);
     }
 
     ShowOptionsMenu();
-}
-
-void ShowDetails()
-{
-    Console.Clear();
-    ShowTitleForOption("Exibir detalhes da banda");
-    Console.Write("Digite o nome da banda que deseja conhecer melhor: ");
-    string bandName = Console.ReadLine()!;
-    if (RegisteredBands.ContainsKey(bandName))
-    {
-        Band band = RegisteredBands[bandName];
-        Console.WriteLine($"\nA média da banda {bandName} é {band.Average}");
-
-        Console.WriteLine("Digite uma tecla para votar ao menu principal");
-        Console.ReadKey();
-        Console.Clear();
-        ShowOptionsMenu();
-    }
-    else
-    {
-        showMessageNotFoundBand(bandName);
-        ShowOptionsMenu();
-    }
 }
 ShowOptionsMenu();
