@@ -49,14 +49,16 @@ void ShowOptionsMenu()
     switch (chosenNumericOption)
     {
         case 1:
-            RegisterBand();
+            MenuBandRegister register = new();
+            register.Execute(RegisteredBands);
+            ShowOptionsMenu();
             break;
         case 2:
             ShowRegisteredBands();
             break;
         case 3:
-            MenuBandAvaliation menu4 = new();
-            menu4.Execute(RegisteredBands);
+            MenuBandAvaliation avaliation = new();
+            avaliation.Execute(RegisteredBands);
             ShowOptionsMenu();
             break;
         case 4:
@@ -66,8 +68,8 @@ void ShowOptionsMenu()
             RegisterAlbum();
             break;
         case 6:
-            MenuShowDetails menu6 = new(); 
-            menu6.Execute(RegisteredBands);
+            MenuShowDetails showDetails = new(); 
+            showDetails.Execute(RegisteredBands);
             ShowOptionsMenu();
             break;
         case -1:
@@ -79,18 +81,6 @@ void ShowOptionsMenu()
     }
 }
 
-void RegisterBand()
-{
-    Console.Clear();
-    ShowTitleForOption("Registro de bandas");
-    Console.Write("Digite o nome da banda que deseja registrar: ");
-    string bandName = Console.ReadLine()!;
-    Band band = new(bandName);
-    RegisteredBands.Add(bandName, band);
-    Console.Write($"A banda {bandName} foi registrar com sucesso");
-    Thread.Sleep(2000);
-    ShowOptionsMenu();
-}
 
 void ShowRegisteredBands()
 {
