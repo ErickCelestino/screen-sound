@@ -1,6 +1,5 @@
 ﻿using ScreenSound.Models;
 using ScreenSound.Menus;
-using ScreenSound.Utils;
 
 Band ira = new("Ira!");
 ira.AddNote(new Avaliation(10));
@@ -15,22 +14,6 @@ Dictionary<string, Band> RegisteredBands = new()
     { ira.Name, ira },
     { "The Beatles", beatles }
 };
-
-void ShowLogo()
-{
-    Console.Clear();
-    string welcome = "Welcome to Screen Sound 2.0!";
-    Console.WriteLine(@"
-░██████╗░█████╗░██████╗░███████╗███╗░░██╗███╗░░██╗  ░██████╗░█████╗░██╗░░░██╗███╗░░██╗██████╗░
-██╔════╝██╔══██╗██╔══██╗██╔════╝████╗░██║████╗░██║  ██╔════╝██╔══██╗██║░░░██║████╗░██║██╔══██╗
-╚█████╗░██║░░╚═╝██████╔╝█████╗░░██╔██╗██║██╔██╗██║  ╚█████╗░██║░░██║██║░░░██║██╔██╗██║██║░░██║
-░╚═══██╗██║░░██╗██╔══██╗██╔══╝░░██║╚████║██║╚████║  ░╚═══██╗██║░░██║██║░░░██║██║╚████║██║░░██║
-██████╔╝╚█████╔╝██║░░██║███████╗██║░╚███║██║░╚███║  ██████╔╝╚█████╔╝╚██████╔╝██║░╚███║██████╔╝
-╚═════╝░░╚════╝░╚═╝░░╚═╝╚══════╝╚═╝░░╚══╝╚═╝░░╚══╝  ╚═════╝░░╚════╝░░╚═════╝░╚═╝░░╚══╝╚═════╝░
-    ");
-
-    Console.WriteLine(welcome);
-}
 
 void ShowOptionsMenu()
 {
@@ -67,7 +50,9 @@ void ShowOptionsMenu()
             ShowOptionsMenu();
             break;
         case 5:
-            RegisterAlbum();
+            MenuRegisterAlbum album = new();
+            album.Execute(RegisteredBands);
+            ShowOptionsMenu();
             break;
         case 6:
             MenuShowDetails showDetails = new(); 
@@ -83,6 +68,21 @@ void ShowOptionsMenu()
     }
 }
 
+void ShowLogo()
+{
+    Console.Clear();
+    string welcome = "Welcome to Screen Sound 2.0!";
+    Console.WriteLine(@"
+░██████╗░█████╗░██████╗░███████╗███╗░░██╗███╗░░██╗  ░██████╗░█████╗░██╗░░░██╗███╗░░██╗██████╗░
+██╔════╝██╔══██╗██╔══██╗██╔════╝████╗░██║████╗░██║  ██╔════╝██╔══██╗██║░░░██║████╗░██║██╔══██╗
+╚█████╗░██║░░╚═╝██████╔╝█████╗░░██╔██╗██║██╔██╗██║  ╚█████╗░██║░░██║██║░░░██║██╔██╗██║██║░░██║
+░╚═══██╗██║░░██╗██╔══██╗██╔══╝░░██║╚████║██║╚████║  ░╚═══██╗██║░░██║██║░░░██║██║╚████║██║░░██║
+██████╔╝╚█████╔╝██║░░██║███████╗██║░╚███║██║░╚███║  ██████╔╝╚█████╔╝╚██████╔╝██║░╚███║██████╔╝
+╚═════╝░░╚════╝░╚═╝░░╚═╝╚══════╝╚═╝░░╚══╝╚═╝░░╚══╝  ╚═════╝░░╚════╝░░╚═════╝░╚═╝░░╚══╝╚═════╝░
+    ");
+
+    Console.WriteLine(welcome);
+}
 
 void ShowRegisteredBands()
 {
@@ -106,26 +106,4 @@ void ShowTitleForOption(string title)
     Console.WriteLine(asteriscs + "\n");
 }
 
-void RegisterAlbum()
-{
-    Console.Clear();
-    ShowTitleForOption("Registro de álbuns");
-    Console.Write("Digite a banda cujo álbum deseja registrar: ");
-    string bandName = Console.ReadLine()!;
-    if (RegisteredBands.ContainsKey(bandName))
-    {
-        Console.Write("Agora digite o título do álbum: ");
-        string titleAlbum = Console.ReadLine()!;
-        Band band = RegisteredBands[bandName];
-        band.AddAlbum(new Album(titleAlbum));
-        Console.WriteLine($"O álbum {titleAlbum} de {bandName} foi registrado com sucesso!");
-        Thread.Sleep(4000);
-    }
-    else
-    {
-        Errors.ShowMessageNotFoundBand(bandName);
-    }
-
-    ShowOptionsMenu();
-}
 ShowOptionsMenu();
