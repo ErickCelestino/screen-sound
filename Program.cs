@@ -55,7 +55,9 @@ void ShowOptionsMenu()
             ShowRegisteredBands();
             break;
         case 3:
-            RateBand();
+            MenuBandAvaliation menu4 = new();
+            menu4.Execute(RegisteredBands);
+            ShowOptionsMenu();
             break;
         case 4:
             ShowAverage();
@@ -64,8 +66,8 @@ void ShowOptionsMenu()
             RegisterAlbum();
             break;
         case 6:
-            ShowDetailsMenu menu = new(); 
-            menu.Execute(RegisteredBands);
+            MenuShowDetails menu6 = new(); 
+            menu6.Execute(RegisteredBands);
             ShowOptionsMenu();
             break;
         case -1:
@@ -110,33 +112,6 @@ void ShowTitleForOption(string title)
     Console.WriteLine(asteriscs);
     Console.WriteLine(title);
     Console.WriteLine(asteriscs + "\n");
-}
-
-void RateBand()
-{
-    // Digite qual banda deseja avaliar
-    // Se a banda existir no dicionário >> atribuir uma nota
-    // Senão, volta ao menu principal
-
-    Console.Clear();
-    ShowTitleForOption("Avaliar banda");
-    Console.Write("Digite o nome da banda que deseja avaliar: ");
-    string bandName = Console.ReadLine()!;
-    if (RegisteredBands.ContainsKey(bandName))
-    {
-        Band band = RegisteredBands[bandName];
-        Console.Write($"Qual a nota que a banda {bandName} merece: ");
-        Avaliation note = Avaliation.Parse(Console.ReadLine()!);
-        band.AddNote(note);
-        Console.WriteLine($"\nA nota {note.Note} foi registrada com sucesso para a banda {bandName}");
-        Thread.Sleep(2000);
-        ShowOptionsMenu();
-    }
-    else
-    {
-        Errors.ShowMessageNotFoundBand(bandName);
-        ShowOptionsMenu();
-    };
 }
 
 void ShowAverage()

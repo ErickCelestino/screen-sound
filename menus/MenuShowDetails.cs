@@ -3,16 +3,8 @@ using ScreenSound.Utils;
 
 namespace ScreenSound.Menus;
 
-internal class ShowDetailsMenu
+internal class MenuShowDetails: Menu
 {
-    static void ShowTitleForOption(string title)
-    {
-        int quantityForLyrics = title.Length;
-        string asteriscs = string.Empty.PadLeft(quantityForLyrics, '*');
-        Console.WriteLine(asteriscs);
-        Console.WriteLine(title);
-        Console.WriteLine(asteriscs + "\n");
-    }
 
     public void Execute(Dictionary<string, Band> RegisteredBands)
     {
