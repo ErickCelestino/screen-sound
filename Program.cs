@@ -62,7 +62,9 @@ void ShowOptionsMenu()
             ShowOptionsMenu();
             break;
         case 4:
-            ShowAverage();
+            MenuShowAverage average = new();
+            average.Execute(RegisteredBands);
+            ShowOptionsMenu();
             break;
         case 5:
             RegisterAlbum();
@@ -102,27 +104,6 @@ void ShowTitleForOption(string title)
     Console.WriteLine(asteriscs);
     Console.WriteLine(title);
     Console.WriteLine(asteriscs + "\n");
-}
-
-void ShowAverage()
-{
-    Console.Clear();
-    ShowTitleForOption("Exibir a média da banda");
-    Console.Write("Digite o nome da banda para exibir média: ");
-    string bandName = Console.ReadLine()!;
-    if (RegisteredBands.ContainsKey(bandName))
-    {
-        Band band = RegisteredBands[bandName];
-        Console.WriteLine($"\nA média da banda {bandName} é {band.Average}");
-        Console.WriteLine("Digite uma tecla para voltar ao menu principal");
-        Console.ReadKey();
-        ShowOptionsMenu();
-    }
-    else
-    {
-        Errors.ShowMessageNotFoundBand(bandName);
-        ShowOptionsMenu();
-    }
 }
 
 void RegisterAlbum()
