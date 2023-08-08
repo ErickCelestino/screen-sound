@@ -37,7 +37,9 @@ void ShowOptionsMenu()
             ShowOptionsMenu();
             break;
         case 2:
-            ShowRegisteredBands();
+            MenuShowRegisteredBands registeredBand = new();
+            registeredBand.Execute(RegisteredBands);
+            ShowOptionsMenu();
             break;
         case 3:
             MenuBandAvaliation avaliation = new();
@@ -84,26 +86,5 @@ void ShowLogo()
     Console.WriteLine(welcome);
 }
 
-void ShowRegisteredBands()
-{
-    Console.Clear();
-    ShowTitleForOption("Exibindo todas as bandas registradas");
-    foreach (string band in RegisteredBands.Keys)
-    {
-        Console.WriteLine($"Banda: {band}");
-    }
-    Console.WriteLine("\nDigite uma tecla para voltar ao menu");
-    Console.ReadKey();
-    ShowOptionsMenu();
-}
-
-void ShowTitleForOption(string title)
-{
-    int quantityForLyrics = title.Length;
-    string asteriscs = string.Empty.PadLeft(quantityForLyrics, '*');
-    Console.WriteLine(asteriscs);
-    Console.WriteLine(title);
-    Console.WriteLine(asteriscs + "\n");
-}
 
 ShowOptionsMenu();
