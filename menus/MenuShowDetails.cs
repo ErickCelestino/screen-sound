@@ -16,7 +16,11 @@ internal class MenuShowDetails: Menu
         {
             Band band = RegisteredBands[bandName];
             Console.WriteLine($"\nA média da banda {bandName} é {band.Average}");
-
+            Console.WriteLine("\nDiscografia:");
+            foreach(Album album in band.Albums)
+            {
+                Console.WriteLine($"{album.Name} -> {album.Average}");
+            }
             Console.WriteLine("Digite uma tecla para votar ao menu principal");
             Console.ReadKey();
             Console.Clear();
