@@ -23,6 +23,7 @@ Dictionary<int, Menu> options = new()
     {4, new MenuShowAverage()},
     {5, new MenuRegisterAlbum()},
     {6, new MenuShowDetails()},
+    {7, new MenuAlbumAvaliation()},
     {-1, new MenuExit()} 
 };
 
@@ -35,6 +36,7 @@ void ShowOptionsMenu()
     Console.WriteLine("Digite 4 para exibir a média de uma banda");
     Console.WriteLine("Digite 5 para registrar álbum da banda");
     Console.WriteLine("Digite 6 para exibir detalhes de uma banda");
+    Console.WriteLine("Digite 7 para avaliar álbum");
     Console.WriteLine("Digite -1 para sair");
 
     Console.Write("\nDigite a sua opção: ");
@@ -49,6 +51,5 @@ void ShowOptionsMenu()
         Console.WriteLine("Opção inválida");
     }
 }
-
 
 ShowOptionsMenu();

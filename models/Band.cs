@@ -1,11 +1,11 @@
 namespace ScreenSound.Models;
-internal class Band 
+internal class Band : IAvaliation
 {
     public Band(string name)
     {
         Name = name;
     }
-    private readonly List<Album> Albums = new();
+    public readonly List<Album> Albums = new();
     private readonly List<Avaliation> Notes = new();
     public double Average
     {
