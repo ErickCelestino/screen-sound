@@ -15,6 +15,7 @@ internal class MenuShowDetails: Menu
         if (RegisteredBands.ContainsKey(bandName))
         {
             Band band = RegisteredBands[bandName];
+            Console.WriteLine(band.Resume);
             Console.WriteLine($"\nA média da banda {bandName} é {band.Average}");
             Console.WriteLine("\nDiscografia:");
             foreach(Album album in band.Albums)

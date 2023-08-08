@@ -26,6 +26,7 @@ internal class Band : IAvaliation
     {
         Notes.Add(note);
     }
+    public string? Resume { get; set; }
 
     public void ShowDiscography()
     {
