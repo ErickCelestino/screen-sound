@@ -4,9 +4,9 @@ namespace ScreenSound.Menus;
 
 internal class MenuShowRegisteredBands : Menu
 {
-    public void Execute(Dictionary<string, Band> RegisteredBands)
+    public override void Execute(Dictionary<string, Band> RegisteredBands)
     {
-        Console.Clear();
+        base.Execute(RegisteredBands);
         Menu.ShowTitleForOption("Exibindo todas as bandas registradas");
         foreach (string band in RegisteredBands.Keys)
         {

@@ -5,9 +5,9 @@ namespace ScreenSound.Menus;
 
 internal class MenuShowAverage : Menu
 {
-    public void Execute(Dictionary<string, Band> RegisteredBands)
+    public override void Execute(Dictionary<string, Band> RegisteredBands)
     {
-        Console.Clear();
+        base.Execute(RegisteredBands);
         ShowTitleForOption("Exibir a média da banda");
         Console.Write("Digite o nome da banda para exibir média: ");
         string bandName = Console.ReadLine()!;

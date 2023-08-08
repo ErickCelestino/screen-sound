@@ -15,9 +15,20 @@ Dictionary<string, Band> RegisteredBands = new()
     { "The Beatles", beatles }
 };
 
+Dictionary<int, Menu> options = new()
+{
+    {1, new MenuBandRegister()},
+    {2, new MenuShowRegisteredBands()},
+    {3, new MenuBandAvaliation()},
+    {4, new MenuShowAverage()},
+    {5, new MenuRegisterAlbum()},
+    {6, new MenuShowDetails()},
+    {-1, new MenuExit()} 
+};
+
 void ShowOptionsMenu()
 {
-    ShowLogo();
+    Menu.ShowLogo();
     Console.WriteLine("\nDigite 1 para registrar uma banda");
     Console.WriteLine("Digite 2 para mostrar todas as bandas");
     Console.WriteLine("Digite 3 para avaliar uma banda");
@@ -29,61 +40,14 @@ void ShowOptionsMenu()
     Console.Write("\nDigite a sua opção: ");
     string chosenOption = Console.ReadLine()!;
     int chosenNumericOption = int.Parse(chosenOption);
-    switch (chosenNumericOption)
+    if (options.ContainsKey(chosenNumericOption))
     {
-        case 1:
-            MenuBandRegister register = new();
-            register.Execute(RegisteredBands);
-            ShowOptionsMenu();
-            break;
-        case 2:
-            MenuShowRegisteredBands registeredBand = new();
-            registeredBand.Execute(RegisteredBands);
-            ShowOptionsMenu();
-            break;
-        case 3:
-            MenuBandAvaliation avaliation = new();
-            avaliation.Execute(RegisteredBands);
-            ShowOptionsMenu();
-            break;
-        case 4:
-            MenuShowAverage average = new();
-            average.Execute(RegisteredBands);
-            ShowOptionsMenu();
-            break;
-        case 5:
-            MenuRegisterAlbum album = new();
-            album.Execute(RegisteredBands);
-            ShowOptionsMenu();
-            break;
-        case 6:
-            MenuShowDetails showDetails = new(); 
-            showDetails.Execute(RegisteredBands);
-            ShowOptionsMenu();
-            break;
-        case -1:
-            Console.WriteLine("Tchau tchau =)");
-            break;
-        default:
-            Console.WriteLine("Opção inválida");
-            break;
+        Menu menuTobeDisplayed = options[chosenNumericOption];
+        menuTobeDisplayed.Execute(RegisteredBands);
+        if (chosenNumericOption > 0) ShowOptionsMenu();
+    } else {
+        Console.WriteLine("Opção inválida");
     }
-}
-
-void ShowLogo()
-{
-    Console.Clear();
-    string welcome = "Welcome to Screen Sound 2.0!";
-    Console.WriteLine(@"
-░██████╗░█████╗░██████╗░███████╗███╗░░██╗███╗░░██╗  ░██████╗░█████╗░██╗░░░██╗███╗░░██╗██████╗░
-██╔════╝██╔══██╗██╔══██╗██╔════╝████╗░██║████╗░██║  ██╔════╝██╔══██╗██║░░░██║████╗░██║██╔══██╗
-╚█████╗░██║░░╚═╝██████╔╝█████╗░░██╔██╗██║██╔██╗██║  ╚█████╗░██║░░██║██║░░░██║██╔██╗██║██║░░██║
-░╚═══██╗██║░░██╗██╔══██╗██╔══╝░░██║╚████║██║╚████║  ░╚═══██╗██║░░██║██║░░░██║██║╚████║██║░░██║
-██████╔╝╚█████╔╝██║░░██║███████╗██║░╚███║██║░╚███║  ██████╔╝╚█████╔╝╚██████╔╝██║░╚███║██████╔╝
-╚═════╝░░╚════╝░╚═╝░░╚═╝╚══════╝╚═╝░░╚══╝╚═╝░░╚══╝  ╚═════╝░░╚════╝░░╚═════╝░╚═╝░░╚══╝╚═════╝░
-    ");
-
-    Console.WriteLine(welcome);
 }
 
 

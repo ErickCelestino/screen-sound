@@ -1,9 +1,12 @@
+using ScreenSound.Models;
+
 namespace ScreenSound.Menus;
 
 internal class MenuExit: Menu
 {
-    public void Execute()
+    public override void Execute(Dictionary<string, Band> RegisteredBands)
     {
-        Console.WriteLine("Tchau tchau :) ");
+        base.Execute(RegisteredBands);
+        Console.WriteLine("Tchau tchau :) ");   
     }
 }
